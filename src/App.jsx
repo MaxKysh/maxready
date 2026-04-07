@@ -14,10 +14,10 @@ function useInView(t=0.1){const r=useRef(null);const[v,s]=useState(false);useEff
 function FI({children,className="",delay=0}){const[r,v]=useInView();return (<div ref={r} className={className} style={{opacity:v?1:0,transform:v?"translateY(0)":"translateY(20px)",transition:`all 0.6s ease ${delay}s`}}>{children}</div>)}
 
 const GRID=[
-  {src:P.l1,n:"Leysan",l:"City walk"},{src:P.a1,n:"Alisa",l:"Sobaka s Rukoy"},{src:P.t1,n:"Tatiana",l:"Yoga studio"},
   {src:P.l4,n:"Leysan",l:"City walk"},{src:P.a2,n:"Alisa",l:"Sobaka s Rukoy"},{src:P.t4,n:"Tatiana",l:"Yoga studio"},
   {src:P.l5,n:"Leysan",l:"City walk"},{src:P.a3,n:"Alisa",l:"Sobaka s Rukoy"},{src:P.t5,n:"Tatiana",l:"Yoga studio"},
   {src:P.l3,n:"Leysan",l:"City walk"},{src:P.a4,n:"Alisa",l:"Sobaka s Rukoy"},{src:P.t2,n:"Tatiana",l:"Yoga studio"},
+  {src:P.l1,n:"Leysan",l:"City walk"},{src:P.a1,n:"Alisa",l:"Sobaka s Rukoy"},{src:P.t1,n:"Tatiana",l:"Yoga studio"},
 ];
 
 function HB({x,y,onDone}){useEffect(()=>{const t=setTimeout(onDone,800);return ()=>clearTimeout(t)},[onDone]);return (<div className="pointer-events-none fixed z-50" style={{left:x,top:y}}>{Array.from({length:6},(_,i)=>{const a=(i/6)*360+Math.random()*40,d=35+Math.random()*45,r=(a*Math.PI)/180;return (<div key={i} className="absolute" style={{fontSize:11+Math.random()*12,animation:"hf .7s ease-out forwards",animationDelay:`${Math.random()*.1}s`,"--tx":`${Math.cos(r)*d}px`,"--ty":`${Math.sin(r)*d}px`}}>❤️</div>)})}</div>)}
@@ -49,11 +49,11 @@ function SS(){
   return (<div className="relative w-full" style={{aspectRatio:"3/4"}}>
     {intro&&<>
       <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{zIndex:7,animation:"fanLeft 2s ease-in-out forwards"}}>
-        <img src={hp[0].src} alt="" className="w-full h-full object-cover object-top"/>
+        <img src={hp[2].src} alt="" className="w-full h-full object-cover object-top"/>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
       </div>
       <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{zIndex:8,animation:"fanRight 2s ease-in-out forwards"}}>
-        <img src={hp[2].src} alt="" className="w-full h-full object-cover object-top"/>
+        <img src={hp[1].src} alt="" className="w-full h-full object-cover object-top"/>
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
       </div>
     </>}

@@ -43,22 +43,24 @@ function SC({photo,onSwipe,isTop}){
 function SS(){
   const hp=[{id:1,src:P.l1,n:"Leysan",l:"Novi Sad"},{id:2,src:P.a1,n:"Alisa",l:"Sobaka s Rukoy"},{id:3,src:P.t1,n:"Tatiana",l:"Yoga studio"}];
   const[stk,setStk]=useState(hp);const[hts,setHts]=useState([]);const[sc,setSc]=useState(0);
-  const[fan,setFan]=useState(0);
-  useEffect(()=>{const t1=setTimeout(()=>setFan(1),300);const t2=setTimeout(()=>setFan(2),1400);return()=>{clearTimeout(t1);clearTimeout(t2)}},[]);
+  const[intro,setIntro]=useState(true);
+  useEffect(()=>{const t=setTimeout(()=>setIntro(false),2000);return()=>clearTimeout(t)},[]);
   const sw=useCallback(dir=>{if(dir==="r")setHts(p=>[...p,{id:Date.now(),x:window.innerWidth/2,y:window.innerHeight/3}]);setSc(c=>c+1);setStk(p=>{const n=[...p];const r=n.shift();n.push({...r,id:r.id+100});return n})},[]);
-  const fanStyles=[
-    {transform:"rotate(-8deg) translateX(-18px)",zIndex:8},
-    {transform:"rotate(0deg) translateX(0)",zIndex:10},
-    {transform:"rotate(8deg) translateX(18px)",zIndex:9}
-  ];
-  if(fan<2) return (<div className="relative w-full" style={{aspectRatio:"3/4"}}>
-    {hp.map((p,i)=>(<div key={p.id} className="absolute inset-0 rounded-2xl overflow-hidden" style={{...fan===1?fanStyles[i]:{transform:"rotate(0) translateX(0)",zIndex:10-i},transition:"all .6s cubic-bezier(.34,1.56,.64,1)",boxShadow:"0 8px 30px rgba(0,0,0,.4)"}}>
-      <img src={p.src} alt="" className="w-full h-full object-cover object-top"/>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"/>
-      <div className="absolute bottom-0 left-0 right-0 p-3"><h3 className="text-white font-semibold text-base">{p.n}</h3><p className="text-white/70 text-xs">📍 {p.l}</p></div>
-    </div>))}
-  </div>);
-  return (<div className="relative w-full" style={{aspectRatio:"3/4"}}>{stk.slice(0,2).map((p,i)=>(<SC key={p.id} photo={p} isTop={i===0} onSwipe={sw}/>))}{sc===0&&<div className="absolute -bottom-6 left-0 right-0 text-center text-white/40 text-xs animate-pulse">← swipe →</div>}{hts.map(h=>(<HB key={h.id} x={h.x} y={h.y} onDone={()=>setHts(p=>p.filter(x=>x.id!==h.id))}/>))}</div>)
+  return (<div className="relative w-full" style={{aspectRatio:"3/4"}}>
+    {intro&&<>
+      <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{zIndex:7,animation:"fanLeft 2s ease-in-out forwards"}}>
+        <img src={hp[0].src} alt="" className="w-full h-full object-cover object-top"/>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
+      </div>
+      <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{zIndex:8,animation:"fanRight 2s ease-in-out forwards"}}>
+        <img src={hp[2].src} alt="" className="w-full h-full object-cover object-top"/>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
+      </div>
+    </>}
+    {stk.slice(0,2).map((p,i)=>(<SC key={p.id} photo={p} isTop={i===0} onSwipe={sw}/>))}
+    {sc===0&&!intro&&<div className="absolute -bottom-6 left-0 right-0 text-center text-white/40 text-xs animate-pulse">← swipe →</div>}
+    {hts.map(h=>(<HB key={h.id} x={h.x} y={h.y} onDone={()=>setHts(p=>p.filter(x=>x.id!==h.id))}/>))}
+  </div>)
 }
 
 function LP({photo,index}){
@@ -87,16 +89,19 @@ function SL({children}){return (<p className="text-xs font-mono tracking-[0.3em]
 function CT(){
   const[dots,setDots]=useState([]);
   const th=useRef(false);
+  const add=useCallback((x,y)=>{if(th.current)return;th.current=true;setTimeout(()=>{th.current=false},35);
+    const id=Date.now();
+    setDots(p=>[...p.slice(-14),
+      {id,x:x+(Math.random()-.5)*14,y:y+(Math.random()-.5)*14,s:5+Math.random()*8},
+      {id:id+1,x:x+(Math.random()-.5)*18,y:y+(Math.random()-.5)*18,s:3+Math.random()*6}
+    ])},[]);
   useEffect(()=>{
-    if(window.matchMedia("(hover:none)").matches)return;
-    const h=e=>{if(th.current)return;th.current=true;setTimeout(()=>{th.current=false},35);
-      const id=Date.now();
-      setDots(p=>[...p.slice(-14),
-        {id,x:e.clientX+(Math.random()-.5)*14,y:e.clientY+(Math.random()-.5)*14,s:5+Math.random()*8},
-        {id:id+1,x:e.clientX+(Math.random()-.5)*18,y:e.clientY+(Math.random()-.5)*18,s:3+Math.random()*6}
-      ])};
-    window.addEventListener("mousemove",h);return()=>window.removeEventListener("mousemove",h)
-  },[]);
+    const hm=e=>add(e.clientX,e.clientY);
+    const ht=e=>{const t=e.touches[0];if(t)add(t.clientX,t.clientY)};
+    window.addEventListener("mousemove",hm);
+    window.addEventListener("touchmove",ht,{passive:true});
+    return()=>{window.removeEventListener("mousemove",hm);window.removeEventListener("touchmove",ht)}
+  },[add]);
   useEffect(()=>{const i=setInterval(()=>setDots(p=>p.filter(d=>Date.now()-d.id<700)),50);return()=>clearInterval(i)},[]);
   return (<div className="fixed inset-0 pointer-events-none z-40">{dots.map(d=>{const a=(Date.now()-d.id)/700;return (<div key={d.id} className="absolute rounded-full" style={{left:d.x-d.s/2,top:d.y-d.s/2,width:d.s,height:d.s,background:`radial-gradient(circle,rgba(232,175,130,${.7*(1-a)}),transparent)`,boxShadow:`0 0 ${d.s*2}px rgba(232,175,130,${.35*(1-a)})`}}/>)})}</div>)
 }
@@ -129,6 +134,8 @@ export default function App(){
       body{background:#0a0908;font-family:'DM Sans',sans-serif;color:white;overflow-x:hidden}
       @keyframes hf{0%{transform:translate(0,0) scale(0);opacity:1}50%{opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(1);opacity:0}}
       @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+      @keyframes fanLeft{0%,15%{transform:rotate(0) translateX(0);opacity:1}30%,65%{transform:rotate(-10deg) translateX(-22px);opacity:1}85%{transform:rotate(0) translateX(0);opacity:1}100%{opacity:0}}
+      @keyframes fanRight{0%,15%{transform:rotate(0) translateX(0);opacity:1}30%,65%{transform:rotate(10deg) translateX(22px);opacity:1}85%{transform:rotate(0) translateX(0);opacity:1}100%{opacity:0}}
       .gl{height:1px;background:linear-gradient(90deg,transparent,rgba(232,175,130,.15),transparent)}
       ::-webkit-scrollbar{display:none} html{scrollbar-width:none;scroll-behavior:smooth}
       .cta-btn{position:relative;overflow:hidden;transition:all .3s ease}
@@ -165,7 +172,7 @@ export default function App(){
         <button onClick={scrollCTA} className="text-xs px-4 py-2 rounded-full font-medium transition-all hover:scale-105" style={{background:"#151210",border:"1px solid rgba(91,155,213,.5)",color:C.b}} onMouseEnter={e=>{e.target.style.background="rgba(91,155,213,.12)";e.target.style.borderColor="rgba(91,155,213,.8)";e.target.style.color="#8bc4f0"}} onMouseLeave={e=>{e.target.style.background="#151210";e.target.style.borderColor="rgba(91,155,213,.5)";e.target.style.color=C.b}}>Book now</button>
       </nav>
 
-      <section className="flex items-center justify-center px-5 pt-14 pb-6 relative overflow-hidden" style={{minHeight:"max(40vh,340px)"}}>
+      <section className="flex items-center justify-center px-5 pt-20 pb-6 relative overflow-hidden" style={{minHeight:"max(40vh,340px)"}}>
         <div className="absolute top-1/4 left-1/3 w-96 h-96 rounded-full opacity-15 blur-3xl pointer-events-none" style={{background:"radial-gradient(circle,rgba(232,175,130,.4),transparent 70%)"}}/>
         <div className="hero-inner mw relative z-10">
           <div className="hero-text">

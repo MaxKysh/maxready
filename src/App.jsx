@@ -178,7 +178,7 @@ export default function App(){
           <div className="hero-text">
             <p className="text-xs font-mono tracking-[.3em] uppercase mb-3" style={{color:C.b}}>Dating photography · Novi Sad</p>
             <h1 className="text-3xl font-bold leading-tight mb-4" style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(1.8rem,4.5vw,3rem)"}}>Your next date<br/><span style={{color:C.a}}>starts with a photo</span></h1>
-            <p className="text-white/55 text-base mb-6" style={{maxWidth:"22rem"}}>Cinematic portraits that show the real you. Edited & delivered same day.</p>
+            <p className="text-white/55 text-base mb-6" style={{maxWidth:"22rem"}}>Cinematic portraits that show the real you.<br/><span className="text-white font-medium">Edited & delivered same day.</span></p>
             <Btns center={false}/>
           </div>
           <div className="hero-card"><SS/></div>

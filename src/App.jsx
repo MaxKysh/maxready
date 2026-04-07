@@ -250,11 +250,11 @@ export default function App(){
       <section className="py-14 px-5">
         <FI className="mw text-center mb-6"><SL>FAQ</SL><h2 className="text-2xl font-bold" style={{fontFamily:"'Playfair Display',serif",fontSize:"clamp(1.3rem,3.5vw,2rem)"}}>Frequently asked questions</h2></FI>
         <FI className="mw">
-          <Faq q="How many photos will I receive?" a="9 professionally edited cinematic photos, optimized for dating apps. Plus all raw shots — 50-100+ photos depending on the shoot."/>
+          <Faq q="How many photos will I receive?" a="9 professionally edited cinematic photos, optimized for dating apps. Plus all raw shots — 30-50+ photos depending on the shoot."/>
           <Faq q="Where in Novi Sad do we shoot?" a="Mostly center and Stari Grad — beautiful streets, cafés, parks. We pick 3-4 locations based on your style. Your favorite spots welcome too."/>
           <Faq q="Do I need professional makeup?" a="No — and that's intentional. Come as you'd look on a great date. The goal is the real you, so dates actually recognize you."/>
-          <Faq q="I'm not photogenic — will I look good?" a="Everyone says that! The 30-60 min coffee beforehand helps you relax. By shoot time, you're natural and at ease — that's when the best photos happen."/>
-          <Faq q="What should I wear?" a="I'll send personalized wardrobe tips based on your profile and locations. We can create a mood board together. Wear what makes you confident."/>
+          <Faq q="I'm not photogenic — will I look good?" a="Everyone says that (even the girls from the portfolio above )! The 30-60 min coffee beforehand helps you relax. By shoot time, you're natural and at ease — that's when the best photos happen."/>
+          <Faq q="What should I wear?" a="I'll send personalized wardrobe tips based on your profile and locations. We can create a mood board together. Wear what makes you confident and relaxed."/>
           <Faq q="What format and how fast?" a="4:5 ratio for Tinder/Bumble/Hinge, plus 9:16 for Stories. Delivered within 24 hours, often the same evening."/>
           <Faq q="I speak Serbian — can we communicate?" a="Yes! I speak basic Serbian and use a translator when needed. Serbian speakers get a launch price (€40) helping me build a local portfolio."/>
         </FI>

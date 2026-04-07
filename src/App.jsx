@@ -218,7 +218,7 @@ export default function App(){
           <ul className="space-y-2 mb-6">{["Profile analysis & styling recommendations","30–60 min consultation over coffee","1-hour shoot, 3–4 locations in Novi Sad","Taxi between locations included","9 cinematic edited photos (4:5)","All raw photos from the session","Delivered within 24 hours","Profile copy recommendations"].map((x,i)=>(<li key={i} className="flex items-start gap-2.5 text-white/65 text-sm"><span className="flex-shrink-0 mt-0.5" style={{color:C.a}}>✓</span>{x}</li>))}</ul>
           <div className="rounded-xl p-3.5 mb-5" style={{background:"rgba(91,155,213,.08)",border:"1px solid rgba(91,155,213,.2)"}}>
             <span className="text-xs font-mono tracking-widest" style={{color:C.b}}>🔥 LAUNCH OFFER</span>
-            <p className="text-white/60 text-sm mt-1"><span className="font-semibold" style={{color:C.b}}>€40</span> for Serbian speakers — limited spots. Extra shooting time included.</p>
+            <p className="text-white/60 text-sm mt-1"><span className="font-semibold" style={{color:C.b}}>€40</span> for Serbian speakers — limited spots. Helping me build a local portfolio.</p>
           </div>
           <Btns/>
         </div>
@@ -256,7 +256,7 @@ export default function App(){
           <Faq q="I'm not photogenic — will I look good?" a="Everyone says that! The 30-60 min coffee beforehand helps you relax. By shoot time, you're natural and at ease — that's when the best photos happen."/>
           <Faq q="What should I wear?" a="I'll send personalized wardrobe tips based on your profile and locations. We can create a mood board together. Wear what makes you confident."/>
           <Faq q="What format and how fast?" a="4:5 ratio for Tinder/Bumble/Hinge, plus 9:16 for Stories. Delivered within 24 hours, often the same evening."/>
-          <Faq q="I speak Serbian — can we communicate?" a="Yes! I speak basic Serbian and use a translator when needed. Serbian speakers get a launch price (€40) plus extra shooting time."/>
+          <Faq q="I speak Serbian — can we communicate?" a="Yes! I speak basic Serbian and use a translator when needed. Serbian speakers get a launch price (€40) helping me build a local portfolio."/>
         </FI>
       </section>
 

@@ -237,11 +237,11 @@ export default function App(){
 
       <section className="swm py-14 px-5"><FI className="mw">
         <div style={{display:"flex",flexDirection:"row",gap:"1.5rem",alignItems:"flex-start",flexWrap:"wrap",justifyContent:"center"}}>
-          <div style={{width:"9rem",height:"11rem",borderRadius:"1rem",overflow:"hidden",flexShrink:0,border:"1px solid rgba(255,255,255,.1)"}}><img src={P.me} alt="Maksim" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"}}/></div>
+          <div style={{width:"9rem",height:"11rem",borderRadius:"1rem",overflow:"hidden",flexShrink:0,border:"1px solid rgba(255,255,255,.1)"}}><img src={P.me} alt="Maksim Kyshtymov" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"}}/></div>
           <div style={{flex:1,minWidth:"14rem"}}>
             <SL>Your photographer</SL>
-            <h2 className="text-xl font-bold mb-2" style={{fontFamily:"'Playfair Display',serif"}}>Maksim</h2>
-            <p className="text-white/65 text-sm leading-relaxed mb-3">17 years in photography. Award-winning mobile photographer. Samsung S24 Ultra + custom cinematic presets = photos edited and delivered same day, in a style that stands out from AI content.</p>
+            <h2 className="text-xl font-bold mb-2" style={{fontFamily:"'Playfair Display',serif"}}>Maksim Kyshtymov</h2>
+            <p className="text-white/65 text-sm leading-relaxed mb-3">17 years in photography. Award-winning mobile photographer. Samsung S24 Ultra + custom cinematic presets = photos edited and delivered same day, in a style that stands out from AI content. I am also a musician. Music releasing on Spotify May 10, 2026.</p>
             <div className="flex flex-wrap gap-1.5">{[{i:"🥇",l:"ND Awards Gold"},{i:"🥇",l:"Refocus Gold"},{i:"🥈",l:"Refocus Silver"},{i:"🏆",l:"Top-10 Georgia"},{i:"🥉",l:"One Eyeland"}].map((a,i)=>(<span key={i} className="text-xs px-2 py-1 rounded-full flex items-center gap-1" style={{background:"rgba(232,175,130,.1)",border:"1px solid rgba(232,175,130,.2)",color:"rgba(232,175,130,.8)"}}>{a.i}{a.l}</span>))}</div>
           </div>
         </div>

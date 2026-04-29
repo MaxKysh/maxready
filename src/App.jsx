@@ -241,7 +241,16 @@ export default function App(){
           <div style={{flex:1,minWidth:"14rem"}}>
             <SL>Your photographer</SL>
             <h2 className="text-xl font-bold mb-2" style={{fontFamily:"'Playfair Display',serif"}}>Maksim Kyshtymov</h2>
-            <p className="text-white/65 text-sm leading-relaxed mb-3">17 years in photography. Award-winning mobile photographer. Samsung S24 Ultra + custom cinematic presets = photos edited and delivered same day, in a style that stands out from AI content. I am also a musician (Max Ready). Music releasing on Spotify May 10, 2026.</p>
+            <p className="text-white/65 text-sm leading-relaxed mb-3">17 years in photography. Award-winning mobile photographer. Samsung S24 Ultra + custom cinematic presets = photos edited and delivered same day, in a style that stands out from AI content. I am also a musician (
+              <a 
+                href="https://open.spotify.com/artist/5LuAtR6JTDA9SZ2w8gxFbl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="underline hover:text-blue-500"
+            >
+              Max Ready
+            </a>
+            ).  Music releasing on Spotify May 10, 2026.</p>
             <div className="flex flex-wrap gap-1.5">{[{i:"🥇",l:"ND Awards Gold"},{i:"🥇",l:"Refocus Gold"},{i:"🥈",l:"Refocus Silver"},{i:"🏆",l:"Top-10 Georgia"},{i:"🥉",l:"One Eyeland"}].map((a,i)=>(<span key={i} className="text-xs px-2 py-1 rounded-full flex items-center gap-1" style={{background:"rgba(232,175,130,.1)",border:"1px solid rgba(232,175,130,.2)",color:"rgba(232,175,130,.8)"}}>{a.i}{a.l}</span>))}</div>
           </div>
         </div>
